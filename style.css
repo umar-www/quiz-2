@@ -16,7 +16,7 @@ body {
   backdrop-filter: blur(5px);
 }
 
-.container {
+#container {
   user-select: none;
   border-radius: 20px;
   border: 2px solid #fff;
@@ -95,9 +95,6 @@ h2 {
   transition: 0.3s;
   cursor: pointer;
 }
-#check:active {
-  transform: scale(1.1);
-}
 #nextRound:active {
   transform: scale(1.1);
 }
@@ -115,13 +112,81 @@ h2 {
   align-items: center;
   gap: 3px;
 }
+#startModal{
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  height: 200px;
+  background: none;
+  display: flex;
+  border: 2px solid #bd9100;
+  border-radius: 15px;
+}
 
-.correct {
+#start:active {
+  transform: scale(1.1);
+}
+.modalDiv{
+  text-align: center;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 10px;
+  width: 350px;
+  height: 310px;
+  background: none;
+  display: none;
+  border: 2px solid #bd9100;
+  border-radius: 15px;
+}
+.modalDiv p{
+  font-size: 25px;
+  color: #ffa200;
+  font-weight: 700;
+}
+.correct, .green {
   background-color: green;
   color: #fff;
 }
 
-.wrong {
+.wrong, .red {
   background-color: red;
   color: #fff;
 }
+
+.timeEnd, .black{
+  background-color: #141414;
+  color: #fff;
+}
+
+.modalDiv div{
+  margin: 10px;
+  margin-bottom: 30px;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #fff;
+  display: inline-block;
+  width: 50px ;
+  height: 50px;
+  border-radius: 50%;
+}
+.reset, #start{
+  padding: 15px 55px;
+  background-color: orange;
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.reset:active {
+  transform: scale(1.1);
+}
+
