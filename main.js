@@ -175,8 +175,8 @@ nextRound.addEventListener("click", () => {
 });
 
 resetBtn.addEventListener("click", () => {
-  // window.location.reload();
-  
+  window.location.reload();
+
 });
 
 function init() {
