@@ -10,11 +10,10 @@ const result = document.getElementById("result");
 const btnAnswer = document.querySelectorAll(".btn");
 const chance = document.getElementById("chance");
 const nextRound = document.getElementById("nextRound");
-const check = document.getElementById("check");
 const box = document.querySelectorAll(".box");
 const resetBtn = document.querySelector(".reset");
-const startBtn = document.getElementById("start")
-const startModal = document.getElementById("startModal")
+const startBtn = document.getElementById("start");
+const startModal = document.getElementById("startModal");
 
 const modal = document.querySelector(".modalDiv");
 let green = document.querySelector(".green");
@@ -72,61 +71,47 @@ function generateQuestions() {
   btnAnswer[3].textContent = questionsGenerate[3];
 }
 
-
-container.style.display = 'none';
-startBtn.addEventListener("click", () =>{
-  startModal.style.display = 'none'
-  container.style.display = 'block';
-  timerFunction()
-})
+container.style.display = "none";
+startBtn.addEventListener("click", () => {
+  startModal.style.display = "none";
+  container.style.display = "block";
+  // timerFunction()
+  timerGenrate = setInterval(timerFunction, 1000);
+});
 
 function timerFunction() {
-  timerGenrate = setInterval(() => {
-    time--;
-    timing.textContent = time;
+  time--;
+  timing.textContent = time;
 
-    if (timing.textContent == "0") {
-      clearInterval(timerGenrate);
-      box[counter - 1].classList.add("timeEnd");
+  if (time == 0) {
+    clearInterval(timerGenrate);
+    box[counter - 1].classList.add("timeEnd");
+    time = 8;
 
-      btnAnswer.forEach((item) => {
-        item.addEventListener("click", () => {
-          clearInterval(timerGenrate);
+    btnAnswer.forEach((item) => {
+      item.addEventListener("click", () => {
+        clearInterval(timerGenrate);
+      });
+
+      if (item.textContent == result_Number) {
+        btnAnswer.forEach((elm) => {
+          elm.style.pointerEvents = "none";
         });
 
-        if (item.textContent == result_Number) {
-          btnAnswer.forEach((elm) => {
-            elm.style.pointerEvents = "none";
-          });
-
-          nextRound.style.pointerEvents = "all";
-          item.style.backgroundColor = "green";
-          item.style.color = "#fff";
-        }
-      });
-    }
-  }, 1000);
-
-  btnAnswer.forEach((item) => {
-    item.addEventListener("click", () => {
-      clearInterval(timerGenrate);
-      // btnAnswer.forEach((elm) => {
-      //   elm.addEventListener("click", () => {
-      //     if(elm.textContent == result_Number) {
-      //       time += 10;
-      //     }
-      //   })
-      // })
+        nextRound.style.pointerEvents = "all";
+        item.style.backgroundColor = "green";
+        item.style.color = "#fff";
+      }
     });
-  });
+  }
 }
-
 
 function correctAnswers() {
   nextRound.style.pointerEvents = "none";
 
   btnAnswer.forEach((item) => {
     item.addEventListener("click", () => {
+      clearInterval(timerGenrate);
       nextRound.style.pointerEvents = "all";
       btnAnswer.forEach((elm) => {
         elm.style.pointerEvents = "none";
@@ -137,6 +122,7 @@ function correctAnswers() {
         item.style.color = "#fff";
         result.textContent = "CORRECT✔️";
         box[counter - 1].classList.add("correct");
+        time = time + 10;
       } else {
         btnAnswer.forEach((elm) => {
           if (elm.textContent == result_Number) {
@@ -149,18 +135,16 @@ function correctAnswers() {
         item.style.color = "#fff";
         result.textContent = "WRONG✖️";
         box[counter - 1].classList.add("wrong");
+        time = 8;
       }
     });
   });
 }
 
-
-
-
 nextRound.addEventListener("click", () => {
   counter++;
 
-  if (counter == 10) {
+  if (counter == 11) {
     container.style.display = "none";
     modal.style.display = "block";
 
@@ -177,8 +161,7 @@ nextRound.addEventListener("click", () => {
     });
   }
 
-  time = 10
-  timerFunction();
+  timerGenrate = setInterval(timerFunction, 1000);
 
   init();
 
@@ -192,10 +175,8 @@ nextRound.addEventListener("click", () => {
 });
 
 resetBtn.addEventListener("click", () => {
-  // modal.style.display = "none";
-  // container.style.display = "block";
-  // init()
-  window.location.reload();
+  // window.location.reload();
+  
 });
 
 function init() {
