@@ -21,7 +21,7 @@ body {
   border-radius: 20px;
   border: 2px solid #fff;
   padding: 20px;
-  height: 560px;
+  height: 540px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -36,6 +36,9 @@ body {
   font-size: 35px;
   font-weight: 700;
   color: #2c2c2c;
+}
+#result{
+  line-height: 20px;
 }
 h2 {
   margin-top: 5px;
