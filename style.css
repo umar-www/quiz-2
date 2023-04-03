@@ -14,7 +14,7 @@ body {
   background-image: url(./Best-Online-Quiz-Makers-Featured.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(8px);
 }
 
 #container {

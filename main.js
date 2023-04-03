@@ -59,6 +59,7 @@ function generateQuestions() {
   questionsGenerate.sort(() => Math.random() - 0.5);
 
   chance.textContent = counter;
+
   green.textContent = greenScore;
   red.textContent = redScore;
   black.textContent = blackScore;
@@ -113,6 +114,7 @@ function correctAnswers() {
     item.addEventListener("click", () => {
       clearInterval(timerGenrate);
       nextRound.style.pointerEvents = "all";
+
       btnAnswer.forEach((elm) => {
         elm.style.pointerEvents = "none";
       });
@@ -176,7 +178,6 @@ nextRound.addEventListener("click", () => {
 
 resetBtn.addEventListener("click", () => {
   window.location.reload();
-
 });
 
 function init() {
