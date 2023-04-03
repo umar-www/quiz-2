@@ -1,89 +1,127 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    font-family: Delicious Handrawn;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-image: url(./Best-Online-Quiz-Makers-Featured.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    backdrop-filter: blur(5px);
+body {
+  font-family: Delicious Handrawn;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-image: url(./Best-Online-Quiz-Makers-Featured.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  backdrop-filter: blur(5px);
 }
 
-.container{
-    border-radius: 20px;
-    border: 2px solid #fff;
-    padding: 20px;
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.container {
+  user-select: none;
+  border-radius: 20px;
+  border: 2px solid #fff;
+  padding: 20px;
+  height: 560px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-.timer{
-    border: 2px solid #eee;
-    border-radius: 20px;
-    padding: 0px 20px;
-    text-align: end;
+.timer {
+  border: 2px solid #eee;
+  border-radius: 20px;
+  padding: 0px 20px;
+  text-align: end;
 }
-.timer p{
-    font-size: 35px;
-    font-weight: 700;
-    color: #2c2c2c;
-
+.timer p {
+  font-size: 35px;
+  font-weight: 700;
+  color: #2c2c2c;
 }
-h2{
-    margin-top: 5px;
-    font-size: 25px;
-    color: #141414;
-    font-weight: 800;
+h2 {
+  margin-top: 5px;
+  font-size: 25px;
+  color: #141414;
+  font-weight: 800;
 }
-.btn-style{
-    width: 70px;
-    height: 70px;
-    border-radius: 5px;
-    background-color: #f7f7f7;
-    border: 1px solid #b9b9b9;
-    cursor: pointer;
-    transition: 0.3s;
-    font-size: 20px;
-    color: #000;
-    font-weight: 900;
+.btn-style {
+  width: 70px;
+  height: 70px;
+  border-radius: 5px;
+  background-color: #f7f7f7;
+  border: 1px solid #b9b9b9;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 20px;
+  color: #000;
+  font-weight: 900;
 }
-.btn-style:hover{
-    background-color: rgb(180, 255, 4);
-    color: #fff;
-}
-.btn-style:active{
-    transform: scale(1.1);
+.btn-style:active {
+  transform: scale(1.1);
 }
 
-.game-board{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
+.game-board {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
-.question, .answers{
-    margin-top: 30px;
-    display: flex;
-    gap: 15px;
+.question,
+.answers {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
 }
-#attempt{
-    font-size: 30px;
-    font-weight: 700;
+.question {
+  pointer-events: none;
 }
-.attempts{
-    height: 40px;
-    border-radius: 20px;
-    border: 1px solid #eee;
-    padding: 0px 20px;
+.box {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  /* background-color: #fff; */
+}
+#nextRound {
+  margin-top: 10px;
+  text-align: center;
+  width: 200px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: orange;
+  color: #000;
+  font-size: 14px;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+}
+#check:active {
+  transform: scale(1.1);
+}
+#nextRound:active {
+  transform: scale(1.1);
+}
+#attempt {
+  font-size: 30px;
+  font-weight: 700;
+}
+.attempts {
+  height: 40px;
+  border-radius: 20px;
+  border: 1px solid #eee;
+  padding: 0px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
 }
 
+.correct {
+  background-color: green;
+  color: #fff;
+}
+
+.wrong {
+  background-color: red;
+  color: #fff;
+}

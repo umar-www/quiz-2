@@ -1,38 +1,94 @@
 "use strict";
 
-const num1 = document.getElementById("num1");
-const num2 = document.getElementById("num2");
-const amal = document.getElementById("amal");
+const number_1 = document.getElementById("num1");
+const number_2 = document.getElementById("num2");
+const operations = document.getElementById("amal");
 const result = document.getElementById("result");
-const answer = document.querySelectorAll('.answer')
+const btnAnswer = document.querySelectorAll(".btn");
 const chance = document.getElementById("chance");
-// const answer1 = document.getElementById("answer1");
-// const answer2 = document.getElementById("answer2");
-// const answer3 = document.getElementById("answer3");
-// const answer4 = document.getElementById("answer4");
-let questions = [];
+const nextRound = document.getElementById("nextRound");
+const check = document.getElementById("check");
+const box = document.querySelectorAll(".box");
+
+let questionsGenerate;
+let result_Number;
+let counter = 1;
 
 function generateNumber() {
-  let number1 = Math.floor(Math.random() * 50) + 1;
-  let number2 = Math.floor(Math.random() * 50) + 1;
-  let operation = ["*", "+", "-"].sort(() => Math.random() - 0.5)[0];
+  let number1_generate = Math.floor(Math.random() * 20);
+  let number2_generate = Math.floor(Math.random() * 20);
+  let operation_generate = ["*", "-", "+"].sort(() => Math.random() - 0.5)[0];
 
-  num1.textContent = number1;
-  num2.textContent = number2;
-  amal.textContent = operation;
-}
-generateNumber();
+  number_1.textContent = number1_generate;
+  number_2.textContent = number2_generate;
+  operations.textContent = operation_generate;
 
-function sum() {
-  let result = eval(`${num1.textContent} ${amal.textContent} ${num2.textContent}`);
-  return result;
-}
-console.log(sum());
-
-
-function generateAnswers(){
-  
+  result_Number = eval(
+    `${number_1.textContent} ${operations.textContent} ${number_2.textContent}`
+  );
 }
 
+function generateQuestions() {
+  questionsGenerate = [
+    result_Number + 20,
+    result_Number - 10,
+    result_Number - 20,
+  ];
+  questionsGenerate.push(result_Number);
+  questionsGenerate.sort(() => Math.random() - 0.5);
 
+  chance.textContent = counter;
 
+  btnAnswer[0].textContent = questionsGenerate[0];
+  btnAnswer[1].textContent = questionsGenerate[1];
+  btnAnswer[2].textContent = questionsGenerate[2];
+  btnAnswer[3].textContent = questionsGenerate[3];
+}
+
+function correctAnswers() {
+  nextRound.style.pointerEvents = "none";
+  btnAnswer.forEach((item) => {
+    item.addEventListener("click", () => {
+      nextRound.style.pointerEvents = "all";
+      btnAnswer.forEach((elm) => {
+        elm.style.pointerEvents = "none";
+      });
+      if (item.textContent == result_Number) {
+        item.style.backgroundColor = "green";
+        item.style.color = "#fff";
+        result.textContent = "CORRECT✔️";
+        box[counter - 1].classList.add("correct");
+      } else {
+        btnAnswer.forEach((elm) => {
+          if (elm.textContent == result_Number) {
+            elm.style.backgroundColor = "green";
+            elm.style.color = "#fff";
+          }
+        });
+        item.style.backgroundColor = "red";
+        item.style.color = "#fff";
+        result.textContent = "WRONG✖️";
+        box[counter - 1].classList.add("wrong");
+      }
+    });
+  });
+}
+
+nextRound.addEventListener("click", () => {
+  counter++;
+  init();
+
+  result.textContent = "Result-?";
+  btnAnswer.forEach((item) => {
+    item.style.backgroundColor = "#f7f7f7";
+    item.style.color = "#000";
+    item.style.pointerEvents = "all";
+  });
+});
+
+function init() {
+  generateNumber();
+  generateQuestions();
+  correctAnswers();
+}
+init();
