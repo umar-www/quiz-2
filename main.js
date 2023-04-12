@@ -11,6 +11,7 @@ const btnAnswer = document.querySelectorAll(".btn");
 const chance = document.getElementById("chance");
 const nextRound = document.getElementById("nextRound");
 const box = document.querySelectorAll(".box");
+
 const resetBtn = document.querySelector(".reset");
 const startBtn = document.getElementById("start");
 const startModal = document.getElementById("startModal");
@@ -65,6 +66,7 @@ function generateQuestions() {
   black.textContent = blackScore;
 
   timing.textContent = time;
+  // console.log(time);
 
   btnAnswer[0].textContent = questionsGenerate[0];
   btnAnswer[1].textContent = questionsGenerate[1];
@@ -87,7 +89,7 @@ function timerFunction() {
   if (time == 0) {
     clearInterval(timerGenrate);
     box[counter - 1].classList.add("timeEnd");
-    time = 8;
+    // time = 8;
 
     btnAnswer.forEach((item) => {
       item.addEventListener("click", () => {
@@ -122,6 +124,7 @@ function correctAnswers() {
       if (item.textContent == result_Number) {
         item.style.backgroundColor = "green";
         item.style.color = "#fff";
+
         result.textContent = "CORRECT✔️";
         box[counter - 1].classList.add("correct");
         time = time + 10;
@@ -137,13 +140,14 @@ function correctAnswers() {
         item.style.color = "#fff";
         result.textContent = "WRONG✖️";
         box[counter - 1].classList.add("wrong");
-        time = 8;
+        // time = 8;
       }
     });
   });
 }
 
 nextRound.addEventListener("click", () => {
+  time = 10
   counter++;
 
   if (counter == 11) {
@@ -186,3 +190,6 @@ function init() {
   correctAnswers();
 }
 init();
+
+
+
